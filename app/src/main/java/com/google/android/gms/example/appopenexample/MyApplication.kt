@@ -8,12 +8,15 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.multidex.MultiDexApplication
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.example.appopenexample.callback.OnShowAdCompleteListener
+import com.google.android.gms.example.appopenexample.callback.AdmobAppOpenAdCallback
+import com.google.android.gms.example.appopenexample.util.Constant
 
 /** Application class that initializes, loads and show ads when activities change states. */
-class MyApplication : MultiDexApplication(), Application.ActivityLifecycleCallbacks, LifecycleObserver {
+class MyApplication : Application(),
+    Application.ActivityLifecycleCallbacks,
+    LifecycleObserver
+{
 
     companion object {
         const val LOG_TAG = "MyApplication"
@@ -38,7 +41,7 @@ class MyApplication : MultiDexApplication(), Application.ActivityLifecycleCallba
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onMoveToForeground() {
         // Show the ad (if available) when the app moves to foreground.
-        currentActivity?.let { appOpenAdManager.showAdIfAvailable(it) }
+        currentActivity?.let { appOpenAdManager.showAdIfAvailable(it, Constant.AD_UNIT_ID) }
     }
 
     /** ActivityLifecycleCallback methods. */
@@ -68,12 +71,16 @@ class MyApplication : MultiDexApplication(), Application.ActivityLifecycleCallba
      * Shows an app open ad.
      *
      * @param activity the activity that shows the app open ad
-     * @param onShowAdCompleteListener the listener to be notified when an app open ad is complete
+     * @param admobAppOpenAdCallback the listener to be notified when an app open ad is complete
      */
-    fun showAdIfAvailable(activity: Activity, onShowAdCompleteListener: OnShowAdCompleteListener) {
+    fun showAdIfAvailable(
+        activity: Activity,
+        appOpenAdUnitId: String,
+        admobAppOpenAdCallback: AdmobAppOpenAdCallback
+    ) {
         // We wrap the showAdIfAvailable to enforce that other classes only interact with MyApplication
         // class.
-        appOpenAdManager.showAdIfAvailable(activity, onShowAdCompleteListener)
+        appOpenAdManager.showAdIfAvailable(activity, appOpenAdUnitId, admobAppOpenAdCallback)
     }
 
 }

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.example.appopenexample.util.Constant
 import com.google.android.gms.example.appopenexample.MyApplication
 import com.google.android.gms.example.appopenexample.R
-import com.google.android.gms.example.appopenexample.callback.OnShowAdCompleteListener
+import com.google.android.gms.example.appopenexample.callback.AdmobAppOpenAdCallback
 
 /** Splash Activity that inflates splash activity xml. */
 class SplashActivity : AppCompatActivity() {
@@ -54,9 +54,14 @@ class SplashActivity : AppCompatActivity() {
                 // Show the app open ad.
                 application.showAdIfAvailable(
                     this@SplashActivity,
-                    object : OnShowAdCompleteListener {
-                        override fun onShowAdComplete() {
+                    Constant.AD_UNIT_ID,
+                    object : AdmobAppOpenAdCallback {
+                        override fun onAdDismissed(tag: String, message: String) {
                             startMainActivity()
+                        }
+
+                        override fun onAdShowed(tag: String, message: String) {
+
                         }
                     })
             }

@@ -8,8 +8,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
-import com.google.android.gms.example.appopenexample.callback.OnShowAdCompleteListener
-import com.google.android.gms.example.appopenexample.util.Constant
+import com.google.android.gms.example.appopenexample.callback.AdmobAppOpenAdCallback
 import com.google.android.gms.example.appopenexample.util.showToast
 import java.util.*
 
@@ -43,7 +42,7 @@ class AppOpenAdManager {
      *
      * @param context the context of the activity that loads the ad
      */
-    fun loadAd(context: Context) {
+    fun loadAd(context: Context, appOpenAdUnitId: String) {
         // Do not load ad if there is an unused ad or one is already loading.
         if (isLoadingAd || isAdAvailable()) {
             return
@@ -53,7 +52,7 @@ class AppOpenAdManager {
         val request = AdRequest.Builder().build()
         AppOpenAd.load(
             context,
-            Constant.AD_UNIT_ID,
+            appOpenAdUnitId,
             request,
             AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
             object : AppOpenAd.AppOpenAdLoadCallback() {
@@ -104,12 +103,17 @@ class AppOpenAdManager {
      *
      * @param activity the activity that shows the app open ad
      */
-    fun showAdIfAvailable(activity: Activity) {
+    fun showAdIfAvailable(activity: Activity, appOpenAdUnitId: String) {
         showAdIfAvailable(
             activity,
-            object : OnShowAdCompleteListener {
-                override fun onShowAdComplete() {
+            appOpenAdUnitId,
+            object : AdmobAppOpenAdCallback {
+                override fun onAdDismissed(tag: String, message: String) {
                     // Empty because the user will go back to the activity that shows the ad.
+                }
+
+                override fun onAdShowed(tag: String, message: String) {
+
                 }
             }
         )
@@ -119,11 +123,12 @@ class AppOpenAdManager {
      * Show the ad if one isn't already showing.
      *
      * @param activity the activity that shows the app open ad
-     * @param onShowAdCompleteListener the listener to be notified when an app open ad is complete
+     * @param admobAppOpenAdCallback the listener to be notified when an app open ad is complete
      */
     fun showAdIfAvailable(
         activity: Activity,
-        onShowAdCompleteListener: OnShowAdCompleteListener
+        appOpenAdUnitId: String,
+        admobAppOpenAdCallback: AdmobAppOpenAdCallback
     ) {
         // If the app open ad is already showing, do not show the ad again.
         if (isShowingAd) {
@@ -134,8 +139,8 @@ class AppOpenAdManager {
         // If the app open ad is not available yet, invoke the callback then load the ad.
         if (!isAdAvailable()) {
             Log.d(LOG_TAG, "The app open ad is not ready yet.")
-            onShowAdCompleteListener.onShowAdComplete()
-            loadAd(activity)
+            admobAppOpenAdCallback.onAdDismissed(LOG_TAG, "The app open ad is not ready yet.")
+            loadAd(activity, appOpenAdUnitId)
             return
         }
 
@@ -149,8 +154,8 @@ class AppOpenAdManager {
                 isShowingAd = false
                 Log.d(LOG_TAG, "onAdDismissedFullScreenContent.")
                 activity.showToast("onAdDismissedFullScreenContent")
-                onShowAdCompleteListener.onShowAdComplete()
-                loadAd(activity)
+                admobAppOpenAdCallback.onAdDismissed(LOG_TAG, "onAdDismissedFullScreenContent")
+                loadAd(activity, appOpenAdUnitId)
             }
 
             /** Called when fullscreen content failed to show. */
@@ -159,12 +164,13 @@ class AppOpenAdManager {
                 isShowingAd = false
                 Log.d(LOG_TAG, "onAdFailedToShowFullScreenContent: " + adError.message)
                 activity.showToast("onAdFailedToShowFullScreenContent: " + adError.message)
-                onShowAdCompleteListener.onShowAdComplete()
-                loadAd(activity)
+                admobAppOpenAdCallback.onAdDismissed(LOG_TAG, "onAdFailedToShowFullScreenContent: " + adError.message)
+                loadAd(activity, appOpenAdUnitId)
             }
 
             /** Called when fullscreen content is shown. */
             override fun onAdShowedFullScreenContent() {
+                admobAppOpenAdCallback.onAdShowed(LOG_TAG, "onAdShowedFullScreenContent")
                 Log.d(LOG_TAG, "onAdShowedFullScreenContent.")
                 activity.showToast("onAdShowedFullScreenContent")
             }
