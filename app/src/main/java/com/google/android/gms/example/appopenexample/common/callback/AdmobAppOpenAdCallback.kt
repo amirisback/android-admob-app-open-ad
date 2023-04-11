@@ -1,4 +1,4 @@
-package com.google.android.gms.example.appopenexample.callback
+package com.google.android.gms.example.appopenexample.common.callback
 
 /**
  * Created by Faisal Amir on 24/10/22

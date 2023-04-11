@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.example.appopenexample.callback.AdmobAppOpenAdCallback
+import com.google.android.gms.example.appopenexample.common.callback.AdmobAppOpenAdCallback
 import com.google.android.gms.example.appopenexample.util.Constant
 
 /** Application class that initializes, loads and show ads when activities change states. */

@@ -2,6 +2,7 @@ package com.google.android.gms.example.appopenexample.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 
 /**
@@ -21,4 +22,8 @@ fun Activity.showToast(message: String) {
 
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.startActivityExt(clazz: Class<*>) {
+    startActivity(Intent(this, clazz))
 }
