@@ -1,6 +1,5 @@
 package com.google.android.gms.example.appopenexample.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
