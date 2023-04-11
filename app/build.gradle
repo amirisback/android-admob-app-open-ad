@@ -6,13 +6,16 @@ plugins {
 
 android {
 
-    namespace 'com.google.android.gms.example.appopenexample'
-    compileSdk 33
+    def appId = "com.google.android.gms.example.appopenexample"
+    def sdk = 33
+
+    namespace appId
+    compileSdk sdk
 
     defaultConfig {
-        applicationId "com.google.android.gms.example.appopenexample"
+        applicationId appId
         minSdk 19
-        targetSdk 33
+        targetSdk sdk
         multiDexEnabled true
         versionCode 1
         versionName "1.0"
@@ -23,6 +26,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
@@ -37,7 +44,7 @@ android {
 }
 
 dependencies {
-    
+
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -47,6 +54,7 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-process:2.6.1"
+    implementation 'com.google.android.material:material:1.8.0'
 
     kapt "androidx.lifecycle:lifecycle-compiler:2.6.1"
 }

@@ -1,23 +1,26 @@
 package com.google.android.gms.example.appopenexample.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.example.appopenexample.Constant
 import com.google.android.gms.example.appopenexample.MyApplication
-import com.google.android.gms.example.appopenexample.R
+import com.google.android.gms.example.appopenexample.common.base.BaseActivity
+import com.google.android.gms.example.appopenexample.common.callback.AdmobAppOpenAdCallback
+import com.google.android.gms.example.appopenexample.databinding.ActivitySplashBinding
+import com.google.android.gms.example.appopenexample.util.Constant
+import com.google.android.gms.example.appopenexample.util.startActivityExt
 
 /** Splash Activity that inflates splash activity xml. */
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private var secondsRemaining: Long = 0L
 
+    override fun setupViewBinding(): ActivitySplashBinding {
+        return ActivitySplashBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
 
         // Create a timer so the SplashActivity will be displayed for a fixed amount of time.
         createTimer(Constant.COUNTER_TIME)
@@ -29,16 +32,15 @@ class SplashActivity : AppCompatActivity() {
      * @param seconds the number of seconds that the timer counts down from
      */
     private fun createTimer(seconds: Long) {
-        val counterTextView: TextView = findViewById(R.id.timer)
         val countDownTimer: CountDownTimer = object : CountDownTimer(seconds * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 secondsRemaining = millisUntilFinished / 1000 + 1
-                counterTextView.text = "App is done loading in: $secondsRemaining"
+                binding.timer.text = "App is done loading in: $secondsRemaining"
             }
 
             override fun onFinish() {
                 secondsRemaining = 0
-                counterTextView.text = "Done."
+                binding.timer.text = "Done."
 
                 val application = application as? MyApplication
 
@@ -53,9 +55,14 @@ class SplashActivity : AppCompatActivity() {
                 // Show the app open ad.
                 application.showAdIfAvailable(
                     this@SplashActivity,
-                    object : MyApplication.OnShowAdCompleteListener {
-                        override fun onShowAdComplete() {
+                    Constant.AD_UNIT_ID,
+                    object : AdmobAppOpenAdCallback {
+                        override fun onAdDismissed(tag: String, message: String) {
                             startMainActivity()
+                        }
+
+                        override fun onAdShowed(tag: String, message: String) {
+
                         }
                     })
             }
@@ -65,7 +72,6 @@ class SplashActivity : AppCompatActivity() {
 
     /** Start the MainActivity. */
     fun startMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        startActivityExt(MainActivity::class.java)
     }
 }

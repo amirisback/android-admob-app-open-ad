@@ -1,4 +1,4 @@
-package com.google.android.gms.example.appopenexample
+package com.google.android.gms.example.appopenexample.util
 
 /**
  * Created by Faisal Amir on 24/10/22
