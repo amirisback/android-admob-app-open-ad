@@ -1,4 +1,4 @@
-package com.google.android.gms.example.appopenexample
+package com.google.android.gms.example.appopenexample.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,14 +6,9 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
-/**
- * Number of seconds to count down before showing the app open ad. This simulates the time needed
- * to load the app.
- */
-private const val COUNTER_TIME = 5L
-
-private const val LOG_TAG = "SplashActivity"
+import com.google.android.gms.example.appopenexample.Constant
+import com.google.android.gms.example.appopenexample.MyApplication
+import com.google.android.gms.example.appopenexample.R
 
 /** Splash Activity that inflates splash activity xml. */
 class SplashActivity : AppCompatActivity() {
@@ -25,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         // Create a timer so the SplashActivity will be displayed for a fixed amount of time.
-        createTimer(COUNTER_TIME)
+        createTimer(Constant.COUNTER_TIME)
     }
 
     /**
@@ -50,7 +45,7 @@ class SplashActivity : AppCompatActivity() {
                 // If the application is not an instance of MyApplication, log an error message and
                 // start the MainActivity without showing the app open ad.
                 if (application == null) {
-                    Log.e(LOG_TAG, "Failed to cast application to MyApplication.")
+                    Log.e("SplashScreen", "Failed to cast application to MyApplication.")
                     startMainActivity()
                     return
                 }

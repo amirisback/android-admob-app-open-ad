@@ -1,7 +1,8 @@
-package com.google.android.gms.example.appopenexample
+package com.google.android.gms.example.appopenexample.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.example.appopenexample.R
 
 /** The main activity in the app. */
 class MainActivity : AppCompatActivity() {
