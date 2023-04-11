@@ -6,9 +6,10 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.example.appopenexample.Constant
+import com.google.android.gms.example.appopenexample.util.Constant
 import com.google.android.gms.example.appopenexample.MyApplication
 import com.google.android.gms.example.appopenexample.R
+import com.google.android.gms.example.appopenexample.callback.OnShowAdCompleteListener
 
 /** Splash Activity that inflates splash activity xml. */
 class SplashActivity : AppCompatActivity() {
@@ -53,7 +54,7 @@ class SplashActivity : AppCompatActivity() {
                 // Show the app open ad.
                 application.showAdIfAvailable(
                     this@SplashActivity,
-                    object : MyApplication.OnShowAdCompleteListener {
+                    object : OnShowAdCompleteListener {
                         override fun onShowAdComplete() {
                             startMainActivity()
                         }
