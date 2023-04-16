@@ -1,8 +1,8 @@
-package com.google.android.gms.example.appopenexample.ui
+package com.frogobox.admob.appopenad.ui
 
 import android.os.Bundle
-import com.google.android.gms.example.appopenexample.common.base.BaseActivity
-import com.google.android.gms.example.appopenexample.databinding.ActivityDetailBinding
+import com.frogobox.admob.appopenad.common.base.BaseActivity
+import com.frogobox.admob.appopenad.databinding.ActivityDetailBinding
 
 class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 

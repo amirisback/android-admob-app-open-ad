@@ -1,24 +1,29 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "kotlin-kapt"
 }
 
 android {
 
-    def appId = "com.google.android.gms.example.appopenexample"
+    def appId = "com.frogobox.admob.appopenad"
     def sdk = 33
+    def versionMajor = 1
+    def versionMinor = 0
+    def versionPatch = 0
 
     namespace appId
     compileSdk sdk
 
     defaultConfig {
         applicationId appId
-        minSdk 19
+        minSdk 21
         targetSdk sdk
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
         multiDexEnabled true
-        versionCode 1
-        versionName "1.0"
+
     }
 
     buildTypes {
@@ -33,28 +38,28 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.0'
-    implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.core:core-ktx:1.10.0"
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
 
-    implementation 'com.google.android.gms:play-services-ads:22.0.0'
+    implementation "com.google.android.gms:play-services-ads:22.0.0"
 
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-process:2.6.1"
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation "com.google.android.material:material:1.8.0"
 
     kapt "androidx.lifecycle:lifecycle-compiler:2.6.1"
 }

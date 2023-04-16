@@ -1,13 +1,14 @@
-package com.google.android.gms.example.appopenexample.ui
+package com.frogobox.admob.appopenad.ui
 
 import android.os.Bundle
 import android.util.Log
-import com.google.android.gms.example.appopenexample.MyApplication
-import com.google.android.gms.example.appopenexample.common.base.BaseActivity
-import com.google.android.gms.example.appopenexample.common.callback.AdmobAppOpenAdCallback
-import com.google.android.gms.example.appopenexample.databinding.ActivityMainBinding
-import com.google.android.gms.example.appopenexample.util.Constant
-import com.google.android.gms.example.appopenexample.util.startActivityExt
+import com.frogobox.admob.appopenad.AdApplication
+import com.frogobox.admob.appopenad.common.base.BaseActivity
+import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
+import com.frogobox.admob.appopenad.databinding.ActivityMainBinding
+import com.frogobox.admob.appopenad.util.AdHelper
+import com.frogobox.admob.appopenad.util.Constant
+import com.frogobox.admob.appopenad.util.startActivityExt
 
 /** The main activity in the app. */
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -39,12 +40,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupAppOpenAd() {
-        val application = application as? MyApplication
+        val application = application as? AdApplication
 
         if (application != null) {
             application.showAdIfAvailable(
                 this@MainActivity,
-                Constant.AD_UNIT_ID,
+                AdHelper.getAdOpenAppUnitId(this@MainActivity),
                 object : AdmobAppOpenAdCallback {
                     override fun onAdDismissed(tag: String, message: String) {
                         startActivityExt(DetailActivity::class.java)

@@ -1,4 +1,4 @@
-package com.google.android.gms.example.appopenexample
+package com.frogobox.admob.appopenad
 
 import android.app.Activity
 import android.content.Context
@@ -8,8 +8,8 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
-import com.google.android.gms.example.appopenexample.common.callback.AdmobAppOpenAdCallback
-import com.google.android.gms.example.appopenexample.util.showToast
+import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
+import com.frogobox.admob.appopenad.util.showToast
 import java.util.*
 
 /**

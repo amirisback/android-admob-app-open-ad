@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name=".MyApplication"
+        android:name="com.frogobox.admob.appopenad.AdApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name="com.frogobox.admob.appopenad.ui.SplashActivity"
             android:exported="true"
             android:noHistory="true"
             android:theme="@style/SplashTheme">
@@ -24,11 +24,11 @@
         </activity>
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.frogobox.admob.appopenad.ui.MainActivity"
             android:exported="true" />
 
         <activity
-            android:name=".ui.DetailActivity"
+            android:name="com.frogobox.admob.appopenad.ui.DetailActivity"
             android:exported="false" />
 
         <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
