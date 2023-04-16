@@ -6,7 +6,7 @@ plugins {
 
 android {
 
-    def appId = "com.google.android.gms.example.appopenexample"
+    def appId = "com.frogobox.admob.appopenad"
     def sdk = 33
 
     namespace appId

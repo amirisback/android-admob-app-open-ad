@@ -1,13 +1,13 @@
-package com.google.android.gms.example.appopenexample.ui
+package com.frogobox.admob.appopenad.ui
 
 import android.os.Bundle
 import android.util.Log
-import com.google.android.gms.example.appopenexample.MyApplication
-import com.google.android.gms.example.appopenexample.common.base.BaseActivity
-import com.google.android.gms.example.appopenexample.common.callback.AdmobAppOpenAdCallback
-import com.google.android.gms.example.appopenexample.databinding.ActivityMainBinding
-import com.google.android.gms.example.appopenexample.util.Constant
-import com.google.android.gms.example.appopenexample.util.startActivityExt
+import com.frogobox.admob.appopenad.MyApplication
+import com.frogobox.admob.appopenad.common.base.BaseActivity
+import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
+import com.frogobox.admob.appopenad.databinding.ActivityMainBinding
+import com.frogobox.admob.appopenad.util.Constant
+import com.frogobox.admob.appopenad.util.startActivityExt
 
 /** The main activity in the app. */
 class MainActivity : BaseActivity<ActivityMainBinding>() {

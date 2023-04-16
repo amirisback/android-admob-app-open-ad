@@ -1,4 +1,4 @@
-package com.google.android.gms.example.appopenexample.common.base
+package com.frogobox.admob.appopenad.common.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

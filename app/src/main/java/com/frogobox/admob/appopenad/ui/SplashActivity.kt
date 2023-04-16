@@ -1,14 +1,14 @@
-package com.google.android.gms.example.appopenexample.ui
+package com.frogobox.admob.appopenad.ui
 
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import com.google.android.gms.example.appopenexample.MyApplication
-import com.google.android.gms.example.appopenexample.common.base.BaseActivity
-import com.google.android.gms.example.appopenexample.common.callback.AdmobAppOpenAdCallback
-import com.google.android.gms.example.appopenexample.databinding.ActivitySplashBinding
-import com.google.android.gms.example.appopenexample.util.Constant
-import com.google.android.gms.example.appopenexample.util.startActivityExt
+import com.frogobox.admob.appopenad.MyApplication
+import com.frogobox.admob.appopenad.common.base.BaseActivity
+import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
+import com.frogobox.admob.appopenad.databinding.ActivitySplashBinding
+import com.frogobox.admob.appopenad.util.Constant
+import com.frogobox.admob.appopenad.util.startActivityExt
 
 /** Splash Activity that inflates splash activity xml. */
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {

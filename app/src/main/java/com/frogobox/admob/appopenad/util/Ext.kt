@@ -1,8 +1,9 @@
-package com.google.android.gms.example.appopenexample.util
+package com.frogobox.admob.appopenad.util
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.widget.Toast
 
 /**
@@ -26,4 +27,8 @@ fun Context.showToast(message: String) {
 
 fun Context.startActivityExt(clazz: Class<*>) {
     startActivity(Intent(this, clazz))
+}
+
+fun Context.singleGetSharedPreferences(name: String): SharedPreferences {
+    return getSharedPreferences(name, Context.MODE_PRIVATE)
 }
