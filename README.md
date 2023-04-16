@@ -1,4 +1,6 @@
 ## Admob App Open Ad
+[![Android CI](https://github.com/amirisback/android-admob-app-open-ad/actions/workflows/android-ci.yml/badge.svg)](https://github.com/amirisback/android-admob-app-open-ad/actions/workflows/android-ci.yml)
+
 - Simple Implementation
 - Easy to use
 - Using Preference For Save Data Add Unit Id
