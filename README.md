@@ -17,8 +17,8 @@ $version_release = 1.0.0
 </tr>
 
 <tr>
-    <td><img width="200px" height="420px" src="docs/image/main/ss_01.jpeg"></td>
-    <td><img width="200px" height="420px" src="docs/image/main/ss_02.jpeg"></td>
+    <td><img width="200px" height="420px" src="docs/image/ss_01.jpeg"></td>
+    <td><img width="200px" height="420px" src="docs/image/ss_02.jpeg"></td>
 </tr>
 
 </table>
