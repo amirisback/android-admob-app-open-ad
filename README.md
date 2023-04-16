@@ -1,5 +1,27 @@
-## init-repository
-Initialize Repository
+## Admob App Open Ad
+- Simple Implementation
+- Easy to use
+- Using Preference For Save Data Add Unit Id
+
+## Version Release
+```md
+$version_release = 1.0.0
+```
+
+## Screen Shot
+<table>
+
+<tr>
+    <th>SS 1</th>
+    <th>SS 2</th>
+</tr>
+
+<tr>
+    <td><img width="200px" height="420px" src="docs/image/main/ss_01.jpeg"></td>
+    <td><img width="200px" height="420px" src="docs/image/main/ss_02.jpeg"></td>
+</tr>
+
+</table>
 
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
