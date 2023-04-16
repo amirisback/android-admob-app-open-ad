@@ -10,6 +10,9 @@
 $version_release = 1.0.0
 ```
 
+## What's Next
+- Create this project become library inside [frogo-admob](https://github.com/amirisback/frogo-admob)
+
 ## Screen Shot
 <table>
 
