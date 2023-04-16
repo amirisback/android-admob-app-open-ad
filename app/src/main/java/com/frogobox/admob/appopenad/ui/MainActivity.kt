@@ -2,10 +2,11 @@ package com.frogobox.admob.appopenad.ui
 
 import android.os.Bundle
 import android.util.Log
-import com.frogobox.admob.appopenad.MyApplication
+import com.frogobox.admob.appopenad.AdApplication
 import com.frogobox.admob.appopenad.common.base.BaseActivity
 import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
 import com.frogobox.admob.appopenad.databinding.ActivityMainBinding
+import com.frogobox.admob.appopenad.util.AdHelper
 import com.frogobox.admob.appopenad.util.Constant
 import com.frogobox.admob.appopenad.util.startActivityExt
 
@@ -39,12 +40,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupAppOpenAd() {
-        val application = application as? MyApplication
+        val application = application as? AdApplication
 
         if (application != null) {
             application.showAdIfAvailable(
                 this@MainActivity,
-                Constant.AD_UNIT_ID,
+                AdHelper.getAdOpenAppUnitId(this@MainActivity),
                 object : AdmobAppOpenAdCallback {
                     override fun onAdDismissed(tag: String, message: String) {
                         startActivityExt(DetailActivity::class.java)

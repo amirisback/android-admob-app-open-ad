@@ -2,6 +2,7 @@ package com.frogobox.admob.appopenad
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Lifecycle
@@ -10,16 +11,18 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.google.android.gms.ads.MobileAds
 import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
+import com.frogobox.admob.appopenad.common.delegates.PreferenceDelegatesImpl
+import com.frogobox.admob.appopenad.util.AdHelper
 import com.frogobox.admob.appopenad.util.Constant
 
 /** Application class that initializes, loads and show ads when activities change states. */
-class MyApplication : Application(),
+class AdApplication : Application(),
     Application.ActivityLifecycleCallbacks,
     LifecycleObserver
 {
 
     companion object {
-        const val LOG_TAG = "MyApplication"
+        const val LOG_TAG = "AdApplication"
     }
 
     private lateinit var appOpenAdManager: AppOpenAdManager
@@ -29,19 +32,9 @@ class MyApplication : Application(),
         super.onCreate()
         registerActivityLifecycleCallbacks(this)
 
-        // Log the Mobile Ads SDK version.
-        Log.d(LOG_TAG, "Google Mobile Ads SDK Version: " + MobileAds.getVersion())
-
         MobileAds.initialize(this) {}
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
         appOpenAdManager = AppOpenAdManager()
-    }
-
-    /** LifecycleObserver method that shows the app open ad when the app moves to foreground. */
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onMoveToForeground() {
-        // Show the ad (if available) when the app moves to foreground.
-        currentActivity?.let { appOpenAdManager.showAdIfAvailable(it, Constant.AD_UNIT_ID) }
     }
 
     /** ActivityLifecycleCallback methods. */
@@ -66,6 +59,19 @@ class MyApplication : Application(),
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
 
     override fun onActivityDestroyed(activity: Activity) {}
+
+    open fun getAdOpenAppUnitId(context: Context?): String {
+        return AdHelper.getAdOpenAppUnitId(context)
+    }
+
+    /** LifecycleObserver method that shows the app open ad when the app moves to foreground. */
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onMoveToForeground() {
+        // Show the ad (if available) when the app moves to foreground.
+        Log.d(LOG_TAG, "onMoveToForeground")
+        Log.d(LOG_TAG, "AmirIsBack")
+        currentActivity?.let { appOpenAdManager.showAdIfAvailable(it, getAdOpenAppUnitId(currentActivity)) }
+    }
 
     /**
      * Shows an app open ad.

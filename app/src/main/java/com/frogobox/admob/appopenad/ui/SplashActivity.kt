@@ -3,10 +3,11 @@ package com.frogobox.admob.appopenad.ui
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import com.frogobox.admob.appopenad.MyApplication
+import com.frogobox.admob.appopenad.AdApplication
 import com.frogobox.admob.appopenad.common.base.BaseActivity
 import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
 import com.frogobox.admob.appopenad.databinding.ActivitySplashBinding
+import com.frogobox.admob.appopenad.util.AdHelper
 import com.frogobox.admob.appopenad.util.Constant
 import com.frogobox.admob.appopenad.util.startActivityExt
 
@@ -42,7 +43,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 secondsRemaining = 0
                 binding.timer.text = "Done."
 
-                val application = application as? MyApplication
+                val application = application as? AdApplication
 
                 // If the application is not an instance of MyApplication, log an error message and
                 // start the MainActivity without showing the app open ad.
@@ -55,7 +56,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                 // Show the app open ad.
                 application.showAdIfAvailable(
                     this@SplashActivity,
-                    Constant.AD_UNIT_ID,
+                    AdHelper.getAdOpenAppUnitId(this@SplashActivity),
                     object : AdmobAppOpenAdCallback {
                         override fun onAdDismissed(tag: String, message: String) {
                             startMainActivity()

@@ -15,6 +15,9 @@ object Constant {
 
     const val AD_UNIT_ID = "ca-app-pub-3940256099942544/3419835294"
     const val COUNTER_TIME = 5L
-    const val PREF_NAME = "app_open_ad_pref"
+
+    // Preference
+    const val PREFERENCE_NAME = "PREFERENCE_NAME_APP_OPEN_AD"
+    const val PREF_AD_UNIT_ID = "PREF_AD_UNIT_ID"
 
 }

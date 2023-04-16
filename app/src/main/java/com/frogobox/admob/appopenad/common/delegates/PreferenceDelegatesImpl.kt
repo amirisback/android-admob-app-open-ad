@@ -2,7 +2,7 @@ package com.frogobox.admob.appopenad.common.delegates
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.frogobox.admob.appopenad.util.Constant.PREF_NAME
+import com.frogobox.admob.appopenad.util.Constant.PREFERENCE_NAME
 import com.frogobox.admob.appopenad.util.singleGetSharedPreferences
 
 
@@ -25,7 +25,7 @@ class PreferenceDelegatesImpl(context: Context) : PreferenceDelegates {
         val TAG: String = PreferenceDelegatesImpl::class.java.simpleName
     }
 
-    private val sharedPreferences: SharedPreferences = context.singleGetSharedPreferences(PREF_NAME)
+    private val sharedPreferences: SharedPreferences = context.singleGetSharedPreferences(PREFERENCE_NAME)
     private val prefEditor: SharedPreferences.Editor = sharedPreferences.edit()
 
     override fun savePrefFloat(key: String, value: Float) {
