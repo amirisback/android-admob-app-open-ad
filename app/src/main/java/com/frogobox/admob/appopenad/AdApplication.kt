@@ -11,12 +11,10 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.google.android.gms.ads.MobileAds
 import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
-import com.frogobox.admob.appopenad.common.delegates.PreferenceDelegatesImpl
 import com.frogobox.admob.appopenad.util.AdHelper
-import com.frogobox.admob.appopenad.util.Constant
 
 /** Application class that initializes, loads and show ads when activities change states. */
-class AdApplication : Application(),
+open class AdApplication : Application(),
     Application.ActivityLifecycleCallbacks,
     LifecycleObserver
 {

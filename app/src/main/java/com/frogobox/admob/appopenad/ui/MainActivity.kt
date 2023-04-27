@@ -7,7 +7,6 @@ import com.frogobox.admob.appopenad.common.base.BaseActivity
 import com.frogobox.admob.appopenad.common.callback.AdmobAppOpenAdCallback
 import com.frogobox.admob.appopenad.databinding.ActivityMainBinding
 import com.frogobox.admob.appopenad.util.AdHelper
-import com.frogobox.admob.appopenad.util.Constant
 import com.frogobox.admob.appopenad.util.startActivityExt
 
 /** The main activity in the app. */
